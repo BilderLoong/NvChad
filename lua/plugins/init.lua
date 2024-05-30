@@ -31,7 +31,7 @@ local default_plugins = {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = "User FilePost",
+    event = "User LazyFilePost",
     config = function(_, opts)
       require("colorizer").setup(opts)
 
@@ -56,7 +56,7 @@ local default_plugins = {
   {
     "lukas-reineke/indent-blankline.nvim",
     version = "2.20.7",
-    event = "User FilePost",
+    event = "User LazyFilePost",
     opts = function()
       return require("plugins.configs.others").blankline
     end,
@@ -69,7 +69,7 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "User LazyFilePost",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
@@ -84,7 +84,7 @@ local default_plugins = {
   -- git stuff
   {
     "lewis6991/gitsigns.nvim",
-    event = "User FilePost",
+    event = "User LazyFilePost",
     opts = function()
       return require("plugins.configs.others").gitsigns
     end,
@@ -175,12 +175,12 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n", desc = "Comment toggle current line" },
-      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n", desc = "Comment toggle current block" },
-      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n",          desc = "Comment toggle current line" },
+      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n",          desc = "Comment toggle current block" },
+      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
     },
     init = function()
       require("core.utils").load_mappings "comment"
